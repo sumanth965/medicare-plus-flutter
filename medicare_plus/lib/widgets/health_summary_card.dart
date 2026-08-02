@@ -39,7 +39,9 @@ class HealthSummaryCard extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               value,
-              style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w800,
+              ),
             ),
             if (subtitle != null) ...[
               const SizedBox(height: 4),

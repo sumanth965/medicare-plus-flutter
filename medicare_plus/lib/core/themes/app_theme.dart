@@ -1,4 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
-class AppTheme { const AppTheme._(); static ThemeData get light=>_theme(Brightness.light); static ThemeData get dark=>_theme(Brightness.dark); static ThemeData _theme(Brightness b){ final cs=ColorScheme.fromSeed(seedColor: AppColors.primary, brightness:b, secondary: AppColors.secondary); return ThemeData(useMaterial3:true, brightness:b, colorScheme:cs, textTheme:GoogleFonts.interTextTheme(ThemeData(brightness:b).textTheme), scaffoldBackgroundColor:b==Brightness.light?AppColors.bg:null, cardTheme:CardThemeData(elevation:0,shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(22))), inputDecorationTheme:InputDecorationTheme(filled:true,border:OutlineInputBorder(borderRadius:BorderRadius.circular(16),borderSide:BorderSide.none)));}}
+
+class AppTheme {
+  const AppTheme._();
+  static ThemeData get light => _theme(Brightness.light);
+  static ThemeData get dark => _theme(Brightness.dark);
+  static ThemeData _theme(Brightness b) {
+    final cs = ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+      brightness: b,
+      secondary: AppColors.secondary,
+    );
+    return ThemeData(
+      useMaterial3: true,
+      brightness: b,
+      colorScheme: cs,
+      textTheme: GoogleFonts.interTextTheme(ThemeData(brightness: b).textTheme),
+      scaffoldBackgroundColor: b == Brightness.light ? AppColors.bg : null,
+      cardTheme: CardThemeData(
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+}

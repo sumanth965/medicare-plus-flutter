@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 /// Consistent section title row used across dashboard modules.
 class SectionHeader extends StatelessWidget {
-  const SectionHeader({required this.title, this.actionLabel, this.onAction, super.key});
+  const SectionHeader({
+    required this.title,
+    this.actionLabel,
+    this.onAction,
+    super.key,
+  });
 
   final String title;
   final String? actionLabel;
@@ -15,7 +20,9 @@ class SectionHeader extends StatelessWidget {
         Expanded(
           child: Text(
             title,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
           ),
         ),
         if (actionLabel != null)

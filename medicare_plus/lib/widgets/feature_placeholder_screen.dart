@@ -25,7 +25,12 @@ class FeaturePlaceholderScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900)),
+            Text(
+              title,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+            ),
             const SizedBox(height: AppSpacing.xl),
             Expanded(
               child: Center(
@@ -37,13 +42,28 @@ class FeaturePlaceholderScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 36,
-                          backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
-                          child: Icon(icon, size: 36, color: theme.colorScheme.primary),
+                          backgroundColor: theme.colorScheme.primary.withValues(
+                            alpha: 0.12,
+                          ),
+                          child: Icon(
+                            icon,
+                            size: 36,
+                            color: theme.colorScheme.primary,
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.lg),
-                        Text('Coming in the next feature phase', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
+                        Text(
+                          'Coming in the next feature phase',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                         const SizedBox(height: AppSpacing.sm),
-                        Text(description, textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
+                        Text(
+                          description,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ],
                     ),
                   ),

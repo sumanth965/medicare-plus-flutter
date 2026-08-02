@@ -26,9 +26,9 @@ class SplashScreen extends StatelessWidget {
               const SizedBox(height: 18),
               Text(
                 AppConstants.appName,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      fontWeight: FontWeight.w900,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 8),
               Text(
@@ -38,7 +38,8 @@ class SplashScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               FilledButton(
-                onPressed: () => Navigator.pushNamed(context, AppRoutes.dashboard),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.dashboard),
                 child: const Text('Start Phase 1 preview'),
               ),
             ],

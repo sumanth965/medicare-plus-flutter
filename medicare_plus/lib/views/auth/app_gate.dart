@@ -1,2 +1,0 @@
-import 'package:flutter/material.dart';import 'package:flutter_riverpod/flutter_riverpod.dart';import '../../providers/app_state.dart';import '../main/main_shell.dart';import 'auth_screen.dart';import 'onboarding_screen.dart';
-class AppGate extends ConsumerWidget{const AppGate({super.key});@override Widget build(BuildContext context,WidgetRef ref){if(!ref.watch(onboardedProvider))return const OnboardingScreen();if(!ref.watch(signedInProvider))return const AuthScreen();return const MainShell();}}

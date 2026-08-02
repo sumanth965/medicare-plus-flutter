@@ -1,6 +1,78 @@
 import 'package:flutter/material.dart';
 import '../core/constants/app_constants.dart';
-class PrimaryButton extends StatelessWidget{const PrimaryButton({required this.text,required this.onPressed,super.key});final String text;final VoidCallback? onPressed;@override Widget build(BuildContext c)=>FilledButton(onPressed:onPressed,child:Text(text));}
-class AppTextField extends StatelessWidget{const AppTextField({required this.controller,required this.label,this.icon,this.validator,this.keyboardType,super.key});final TextEditingController controller;final String label;final IconData? icon;final String? Function(String?)? validator;final TextInputType? keyboardType;@override Widget build(BuildContext c)=>TextFormField(controller:controller,validator:validator,keyboardType:keyboardType,decoration:InputDecoration(labelText:label,prefixIcon:icon==null?null:Icon(icon)));}
-class EmptyState extends StatelessWidget{const EmptyState({required this.icon,required this.title,required this.message,super.key});final IconData icon;final String title,message;@override Widget build(BuildContext c)=>Center(child:Padding(padding:const EdgeInsets.all(24),child:Column(mainAxisSize:MainAxisSize.min,children:[Icon(icon,size:54,color:Theme.of(c).colorScheme.primary),const SizedBox(height:12),Text(title,style:Theme.of(c).textTheme.titleLarge),const SizedBox(height:8),Text(message,textAlign:TextAlign.center)])));}
-class DisclaimerCard extends StatelessWidget{const DisclaimerCard({super.key});@override Widget build(BuildContext c)=>Card(child:Padding(padding:const EdgeInsets.all(14),child:Text(AppConstants.disclaimer,style:Theme.of(c).textTheme.bodySmall)));}
+
+class PrimaryButton extends StatelessWidget {
+  const PrimaryButton({required this.text, required this.onPressed, super.key});
+  final String text;
+  final VoidCallback? onPressed;
+  @override
+  Widget build(BuildContext c) =>
+      FilledButton(onPressed: onPressed, child: Text(text));
+}
+
+class AppTextField extends StatelessWidget {
+  const AppTextField({
+    required this.controller,
+    required this.label,
+    this.icon,
+    this.validator,
+    this.keyboardType,
+    super.key,
+  });
+  final TextEditingController controller;
+  final String label;
+  final IconData? icon;
+  final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
+  @override
+  Widget build(BuildContext c) => TextFormField(
+    controller: controller,
+    validator: validator,
+    keyboardType: keyboardType,
+    decoration: InputDecoration(
+      labelText: label,
+      prefixIcon: icon == null ? null : Icon(icon),
+    ),
+  );
+}
+
+class EmptyState extends StatelessWidget {
+  const EmptyState({
+    required this.icon,
+    required this.title,
+    required this.message,
+    super.key,
+  });
+  final IconData icon;
+  final String title, message;
+  @override
+  Widget build(BuildContext c) => Center(
+    child: Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 54, color: Theme.of(c).colorScheme.primary),
+          const SizedBox(height: 12),
+          Text(title, style: Theme.of(c).textTheme.titleLarge),
+          const SizedBox(height: 8),
+          Text(message, textAlign: TextAlign.center),
+        ],
+      ),
+    ),
+  );
+}
+
+class DisclaimerCard extends StatelessWidget {
+  const DisclaimerCard({super.key});
+  @override
+  Widget build(BuildContext c) => Card(
+    child: Padding(
+      padding: const EdgeInsets.all(14),
+      child: Text(
+        AppConstants.disclaimer,
+        style: Theme.of(c).textTheme.bodySmall,
+      ),
+    ),
+  );
+}
