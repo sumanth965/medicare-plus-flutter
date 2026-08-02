@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/themes/app_theme.dart';
 import 'routes/app_routes.dart';
 import 'views/auth/splash_screen.dart';
-import 'views/dashboard/dashboard_screen.dart';
+import 'views/main/main_shell.dart';
 
-/// main() is the first Dart function that runs when the app starts.
-/// runApp places our root widget into Flutter's rendering tree.
 void main() {
-  runApp(const MediCarePlusApp());
+  runApp(const ProviderScope(child: MediCarePlusApp()));
 }
 
-/// Root widget for MediCare+.
-/// StatelessWidget is used because this object only describes configuration;
-/// it does not store changing UI state itself.
+/// Root widget for MediCare+ with Material 3 theming and Riverpod scope.
 class MediCarePlusApp extends StatelessWidget {
   const MediCarePlusApp({super.key});
 
@@ -29,7 +26,7 @@ class MediCarePlusApp extends StatelessWidget {
       initialRoute: AppRoutes.splash,
       routes: {
         AppRoutes.splash: (_) => const SplashScreen(),
-        AppRoutes.dashboard: (_) => const DashboardScreen(),
+        AppRoutes.dashboard: (_) => const MainShell(),
       },
     );
   }
