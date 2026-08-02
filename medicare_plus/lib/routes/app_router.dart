@@ -15,6 +15,7 @@ final GlobalKey<NavigatorState> _shellNavigatorMedicines = GlobalKey<NavigatorSt
 final GlobalKey<NavigatorState> _shellNavigatorAppointments = GlobalKey<NavigatorState>(debugLabel: 'shellAppointments');
 final GlobalKey<NavigatorState> _shellNavigatorReports = GlobalKey<NavigatorState>(debugLabel: 'shellReports');
 final GlobalKey<NavigatorState> _shellNavigatorProfile = GlobalKey<NavigatorState>(debugLabel: 'shellProfile');
+final GlobalKey<NavigatorState> _shellNavigatorHealth = GlobalKey<NavigatorState>(debugLabel: 'shellHealth');
 
 final goRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
@@ -53,6 +54,15 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
+          navigatorKey: _shellNavigatorHealth,
+          routes: [
+            GoRoute(
+              path: '/health',
+              builder: (context, state) => const HealthTrackerScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
           navigatorKey: _shellNavigatorReports,
           routes: [
             GoRoute(
@@ -71,10 +81,6 @@ final goRouter = GoRouter(
           ],
         ),
       ],
-    ),
-    GoRoute(
-      path: '/health',
-      builder: (context, state) => const HealthTrackerScreen(),
     ),
     GoRoute(
       path: '/emergency',
