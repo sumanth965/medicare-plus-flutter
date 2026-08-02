@@ -1,13 +1,2 @@
-import 'package:flutter/material.dart';
-import '../../widgets/feature_placeholder_screen.dart';
-
-class ReportsScreen extends StatelessWidget {
-  const ReportsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) => const FeaturePlaceholderScreen(
-        title: 'Reports',
-        icon: Icons.description_rounded,
-        description: 'Medical PDFs, images, categories, search, preview, download, and delete will be implemented here.',
-      );
-}
+import 'package:flutter/material.dart';import 'package:flutter_riverpod/flutter_riverpod.dart';import 'package:uuid/uuid.dart';import '../../models/app_models.dart';import '../../providers/app_state.dart';
+class ReportsScreen extends ConsumerWidget{const ReportsScreen({super.key});@override Widget build(BuildContext c,WidgetRef ref){final list=ref.watch(reportsProvider);return Scaffold(appBar:AppBar(title:const Text('Medical Reports')),floatingActionButton:FloatingActionButton(onPressed:(){ref.read(reportsProvider.notifier).add(MedicalReport(id:const Uuid().v4(),userId:'demo',title:'Sample report',category:'Blood Test',fileUrl:'Pending Firebase Storage upload'));},child:const Icon(Icons.upload_file)),body:list.isEmpty?const Center(child:Text('No reports uploaded. Tap + to pick PDF or image.')):ListView(padding:const EdgeInsets.all(16),children:[for(final r in list)Card(child:ListTile(leading:const Icon(Icons.description),title:Text(r.title),subtitle:Text('${r.category} • ${r.fileUrl}'),trailing:IconButton(icon:const Icon(Icons.delete),onPressed:()=>ref.read(reportsProvider.notifier).delete(r.id))))]));}}
