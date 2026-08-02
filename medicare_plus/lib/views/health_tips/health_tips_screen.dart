@@ -1,0 +1,2 @@
+import 'package:flutter/material.dart';import '../../providers/app_state.dart';import '../../widgets/common.dart';
+class HealthTipsScreen extends StatelessWidget{const HealthTipsScreen({super.key});@override Widget build(BuildContext c)=>Scaffold(appBar:AppBar(title:const Text('Health Tips')),body:ListView(padding:const EdgeInsets.all(16),children:[for(final t in tips)Card(child:ListTile(leading:const Icon(Icons.tips_and_updates),title:Text(t.title),subtitle:Text('${t.category}\n${t.body}'),isThreeLine:true)),const DisclaimerCard()]));}

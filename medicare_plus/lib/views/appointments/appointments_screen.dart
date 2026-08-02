@@ -1,13 +1,2 @@
-import 'package:flutter/material.dart';
-import '../../widgets/feature_placeholder_screen.dart';
-
-class AppointmentsScreen extends StatelessWidget {
-  const AppointmentsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) => const FeaturePlaceholderScreen(
-        title: 'Appointments',
-        icon: Icons.event_available_rounded,
-        description: 'Doctor appointments, calendar views, details, and statuses will be implemented here.',
-      );
-}
+import 'package:flutter/material.dart';import 'package:flutter_riverpod/flutter_riverpod.dart';import 'package:intl/intl.dart';import 'package:uuid/uuid.dart';import '../../models/app_models.dart';import '../../providers/app_state.dart';
+class AppointmentsScreen extends ConsumerWidget{const AppointmentsScreen({super.key});@override Widget build(BuildContext c,WidgetRef ref){final list=ref.watch(appointmentsProvider);return Scaffold(appBar:AppBar(title:const Text('Appointments')),floatingActionButton:FloatingActionButton(onPressed:()=>_edit(c,ref),child:const Icon(Icons.add)),body:list.isEmpty?const Center(child:Text('No appointments scheduled.')):ListView(padding:const EdgeInsets.all(16),children:[for(final a in list)Card(child:ListTile(leading:const Icon(Icons.event_available),title:Text(a.doctorName),subtitle:Text('${a.clinicName}\n${DateFormat.yMMMd().add_jm().format(a.dateTime)}\n${a.notes}'),isThreeLine:true,onTap:()=>_edit(c,ref,a),trailing:IconButton(icon:const Icon(Icons.delete),onPressed:()=>ref.read(appointmentsProvider.notifier).delete(a.id))))]));}void _edit(BuildContext c,WidgetRef ref,[Appointment? old]){final d=TextEditingController(text:old?.doctorName);final clinic=TextEditingController(text:old?.clinicName);showDialog(context:c,builder:(_)=>AlertDialog(title:Text(old==null?'Add appointment':'Edit appointment'),content:Column(mainAxisSize:MainAxisSize.min,children:[TextField(controller:d,decoration:const InputDecoration(labelText:'Doctor name')),TextField(controller:clinic,decoration:const InputDecoration(labelText:'Hospital / Clinic'))]),actions:[TextButton(onPressed:()=>Navigator.pop(c),child:const Text('Cancel')),FilledButton(onPressed:(){ref.read(appointmentsProvider.notifier).upsert(Appointment(id:old?.id??const Uuid().v4(),userId:'demo',doctorName:d.text,clinicName:clinic.text,dateTime:old?.dateTime??DateTime.now().add(const Duration(days:1))));Navigator.pop(c);},child:const Text('Save'))]));}}
