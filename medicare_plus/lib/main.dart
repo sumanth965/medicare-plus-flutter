@@ -3,9 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/themes/app_theme.dart';
-import 'routes/app_routes.dart';
-import 'views/auth/splash_screen.dart';
-import 'views/main/main_shell.dart';
+import 'views/auth/app_gate.dart';
 
 void main() {
   runApp(const ProviderScope(child: MediCarePlusApp()));
@@ -23,11 +21,7 @@ class MediCarePlusApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      initialRoute: AppRoutes.splash,
-      routes: {
-        AppRoutes.splash: (_) => const SplashScreen(),
-        AppRoutes.dashboard: (_) => const MainShell(),
-      },
+      home: const AppGate(),
     );
   }
 }

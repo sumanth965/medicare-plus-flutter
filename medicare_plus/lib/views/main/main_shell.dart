@@ -37,7 +37,7 @@ class MainShell extends ConsumerWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,
         onDestinationSelected: (index) =>
-            ref.read(selectedTabProvider.notifier).state = index,
+            ref.read(selectedTabProvider.notifier).select(index),
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.medication_rounded), label: 'Medicines'),
